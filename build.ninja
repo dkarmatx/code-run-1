@@ -1,0 +1,17 @@
+builddir = _build
+bindir = _bin
+srcdir = src
+
+cxxflags = -Wall -Werror -Wextra -std=c++20 -g
+ldflags =
+cxx = clang++
+
+rule cxx
+    depfile = $out.d
+    command = $cxx $cxxflags -MD -MF $out.d -c $in -o $out
+
+rule link
+    command = $cxx $ldflags -o $out $in
+
+
+subninja $srcdir/print_the_route_of_the_maximum_cost/build.ninja
