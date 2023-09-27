@@ -15,3 +15,4 @@ rule link
 
 
 subninja $srcdir/print_the_route_of_the_maximum_cost/build.ninja
+subninja $srcdir/knight_move/build.ninja

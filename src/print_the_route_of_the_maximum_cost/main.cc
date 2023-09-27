@@ -5,22 +5,6 @@
 #include <sstream>
 
 namespace common {
-    class StringBuilder {
-    public:
-        template<class T>
-        auto operator<< (const T& arg) -> StringBuilder& {
-            __stream << arg;
-            return *this;
-        }
-
-        operator std::string() const {
-            return __stream.str();
-        }
-
-    private:
-        std::stringstream __stream;
-    };
-
     template <typename T>
     concept ReservableEmplacableContainer = requires (T c) {
         typename T::value_type;
@@ -33,10 +17,10 @@ namespace common {
         Value var;
         std::cin >> var;
         if (!std::cin.good()) {
-            throw std::runtime_error(StringBuilder() << "Failed to read value from stdin");
+            throw std::runtime_error("Failed to read value from stdin");
         }
         return var;
-    };
+    }
 
     template <ReservableEmplacableContainer Collection, typename ... Args>
     auto getFromStdin(const size_t n, Args ... ns) -> Collection {
@@ -108,9 +92,11 @@ namespace solution {
     }
 }  // namespace solution
 
+// https://coderun.yandex.ru/problem/print-the-route-of-the-maximum-cost
+//
 // Условия задачи:
 // 
-// В левом верхнем углу прямоугольной таблицы размером N×MN×M находится черепашка.
+// В левом верхнем углу прямоугольной таблицы размером N×M находится черепашка.
 // В каждой клетке таблицы записано некоторое число. Черепашка может перемещаться
 // вправо или вниз, при этом маршрут черепашки заканчивается в правом нижнем углу таблицы. 
 // 
