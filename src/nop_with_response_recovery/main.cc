@@ -113,9 +113,9 @@ namespace common {
 
 namespace solution {
     auto solve(
-        const std::vector<std::uint64_t>& s1,
-        const std::vector<std::uint64_t>& s2
-    ) -> std::vector<std::uint64_t> {
+        const std::vector<std::int64_t>& s1,
+        const std::vector<std::int64_t>& s2
+    ) -> std::vector<std::int64_t> {
         common::Matrix<size_t> map(s1.size()+1, s2.size()+1, 0ull);
 
         map.forEach(
@@ -130,7 +130,7 @@ namespace solution {
                 }
             });
 
-        std::vector<std::uint64_t> sub;
+        std::vector<std::int64_t> sub;
         sub.reserve(std::min(s1.size(), s2.size()));
 
         size_t i = map.getHeight()-1;
@@ -153,13 +153,13 @@ namespace solution {
         std::reverse(sub.begin(), sub.end());
         return sub;
     }
-
 }  // namespace solution
 
+// https://coderun.yandex.ru/problem/nop-with-response-recovery
 auto main() -> int {
     const auto get_sequence = []() {
         const auto len = common::getFromStdin<size_t>();
-        return common::getFromStdin<std::vector<std::uint64_t>>(len);
+        return common::getFromStdin<std::vector<std::int64_t>>(len);
     };
 
     const auto s1 = get_sequence();
@@ -169,6 +169,6 @@ auto main() -> int {
     std::copy(
         nop_s.begin(),
         nop_s.end(),
-        std::ostream_iterator<std::uint64_t>(std::cout, " "));
+        std::ostream_iterator<std::int64_t>(std::cout, " "));
     std::cout << std::endl;
 }
