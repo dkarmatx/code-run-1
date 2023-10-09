@@ -1,0 +1,6 @@
+name = cheating
+outputdir = $builddir/$name
+
+build $outputdir/main.cc.o: cxx $srcdir/$name/main.cc
+
+build $bindir/$name: link $outputdir/main.cc.o

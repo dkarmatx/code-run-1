@@ -19,3 +19,4 @@ subninja $srcdir/knight_move/build.ninja
 subninja $srcdir/cafe/build.ninja
 subninja $srcdir/nop_with_response_recovery/build.ninja
 subninja $srcdir/connectivity_components/build.ninja
+subninja $srcdir/cheating/build.ninja
